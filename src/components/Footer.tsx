@@ -112,6 +112,16 @@ export default function Footer() {
             ))}
           </div>
 
+          <div className="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-4">
+            <div className="flex items-center space-x-2 mb-2">
+              <Icon name="Info" size={18} className="text-accent" />
+              <p className="text-sm font-semibold text-white">Компания ожидает запуска</p>
+            </div>
+            <p className="text-xs text-white/70">
+              Мы готовимся к началу работы и пока не выдаем займы. Оформление займов станет доступно после официального открытия.
+            </p>
+          </div>
+
           <div className="bg-white/5 rounded-xl p-4 mb-6">
             <p className="text-xs text-white/60 leading-relaxed">
               ООО МФК "Лабубу Финанс". Регистрационный номер в Реестре МФО: 1234567890123. 

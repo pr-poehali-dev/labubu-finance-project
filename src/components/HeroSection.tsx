@@ -18,9 +18,9 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-          <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border border-primary/20 animate-scale-in">
-            <Icon name="Sparkles" size={20} className="text-primary" />
-            <span className="text-sm font-medium text-foreground">Быстрое одобрение за 5 минут</span>
+          <div className="inline-flex items-center space-x-2 bg-accent/10 backdrop-blur-sm px-6 py-3 rounded-full border border-accent/30 animate-scale-in">
+            <Icon name="Clock" size={20} className="text-accent" />
+            <span className="text-sm font-medium text-accent">Скоро запуск • Ожидайте открытия</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
@@ -35,6 +35,16 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             От 5 000 до 100 000 рублей на карту за несколько минут. 
             Минимум документов, максимум возможностей.
           </p>
+
+          <div className="bg-gradient-to-r from-accent/20 to-primary/20 backdrop-blur-sm rounded-2xl p-6 max-w-2xl mx-auto border-2 border-accent/30">
+            <div className="flex items-center justify-center space-x-3 mb-2">
+              <Icon name="Info" size={24} className="text-accent" />
+              <h3 className="text-xl font-bold text-foreground">Компания ожидает запуска</h3>
+            </div>
+            <p className="text-foreground/70">
+              Мы готовимся к открытию и пока не выдаем займы. Следите за обновлениями!
+            </p>
+          </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Button 

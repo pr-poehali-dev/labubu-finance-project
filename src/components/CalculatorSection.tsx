@@ -101,19 +101,18 @@ export default function CalculatorSection({ onNavigate }: CalculatorSectionProps
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4 pt-4">
-                <Button 
-                  size="lg" 
-                  className="text-lg py-6 bg-gradient-to-r from-primary to-secondary hover:opacity-90"
-                  onClick={() => onNavigate('account')}
-                >
-                  <Icon name="ArrowRight" size={24} className="mr-2" />
-                  Оформить займ
-                </Button>
+              <div className="bg-gradient-to-r from-accent/20 to-secondary/20 rounded-2xl p-6 border-2 border-accent/30">
+                <div className="flex items-center justify-center space-x-3 mb-3">
+                  <Icon name="AlertCircle" size={24} className="text-accent" />
+                  <h3 className="text-lg font-bold text-foreground">Компания ожидает запуска</h3>
+                </div>
+                <p className="text-center text-foreground/70 mb-4">
+                  Оформление займов временно недоступно. Мы готовимся к открытию и скоро начнем работу!
+                </p>
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="text-lg py-6 border-2"
+                  className="w-full text-lg py-6 border-2"
                   onClick={() => onNavigate('terms')}
                 >
                   <Icon name="Info" size={24} className="mr-2" />
@@ -121,8 +120,8 @@ export default function CalculatorSection({ onNavigate }: CalculatorSectionProps
                 </Button>
               </div>
 
-              <div className="bg-accent/10 rounded-xl p-4 flex items-start space-x-3">
-                <Icon name="Info" size={20} className="text-accent flex-shrink-0 mt-1" />
+              <div className="bg-muted/50 rounded-xl p-4 flex items-start space-x-3">
+                <Icon name="Info" size={20} className="text-primary flex-shrink-0 mt-1" />
                 <p className="text-sm text-foreground/70">
                   Расчет носит информационный характер. Итоговая сумма может измениться после рассмотрения заявки.
                 </p>

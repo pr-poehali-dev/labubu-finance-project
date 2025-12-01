@@ -35,15 +35,25 @@ export default function AccountSection() {
   return (
     <section className="py-20 bg-gradient-to-b from-white to-muted/30 min-h-screen flex items-center">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
+        <div className="text-center max-w-3xl mx-auto mb-8 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Личный кабинет
             </span>
           </h2>
-          <p className="text-xl text-foreground/70">
+          <p className="text-xl text-foreground/70 mb-6">
             Войдите или зарегистрируйтесь для оформления займа
           </p>
+          
+          <div className="bg-gradient-to-r from-accent/20 to-primary/20 backdrop-blur-sm rounded-2xl p-6 border-2 border-accent/30 max-w-2xl mx-auto mb-8">
+            <div className="flex items-center justify-center space-x-3 mb-2">
+              <Icon name="AlertCircle" size={24} className="text-accent" />
+              <h3 className="text-xl font-bold text-foreground">Регистрация временно недоступна</h3>
+            </div>
+            <p className="text-foreground/70">
+              Компания готовится к запуску. Оформление и выдача займов начнутся в ближайшее время.
+            </p>
+          </div>
         </div>
 
         <div className="max-w-md mx-auto">
@@ -77,19 +87,12 @@ export default function AccountSection() {
                   size="lg"
                   className="w-full text-lg py-6 bg-gradient-to-r from-primary to-secondary hover:opacity-90"
                   onClick={handleSendCode}
-                  disabled={phone.length !== 11 || loading}
+                  disabled={true}
                 >
-                  {loading ? (
-                    <>
-                      <Icon name="Loader2" size={24} className="mr-2 animate-spin" />
-                      Отправка...
-                    </>
-                  ) : (
-                    <>
-                      <Icon name="Send" size={24} className="mr-2" />
-                      Получить код
-                    </>
-                  )}
+                  <>
+                    <Icon name="Lock" size={24} className="mr-2" />
+                    Регистрация недоступна
+                  </>
                 </Button>
 
                 <div className="bg-primary/10 rounded-xl p-4 flex items-start space-x-3">

@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import { authService } from '@/lib/auth';
 
 interface HeaderProps {
   onNavigate: (section: string) => void;
@@ -9,12 +11,12 @@ interface HeaderProps {
 
 export default function Header({ onNavigate, currentSection }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isAuthenticated = authService.isAuthenticated();
 
   const navItems = [
     { id: 'home', label: 'Главная' },
     { id: 'terms', label: 'Условия' },
     { id: 'calculator', label: 'Калькулятор' },
-    { id: 'account', label: 'Личный кабинет' },
     { id: 'faq', label: 'FAQ' },
   ];
 
@@ -31,28 +33,46 @@ export default function Header({ onNavigate, currentSection }: HeaderProps) {
             </span>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => onNavigate(item.id)}
-                className={`text-sm font-medium transition-all hover:text-primary ${
-                  currentSection === item.id ? 'text-primary' : 'text-foreground/70'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
+          <div className="flex items-center space-x-4">
+            <nav className="hidden md:flex items-center space-x-8">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => onNavigate(item.id)}
+                  className={`text-sm font-medium transition-all hover:text-primary ${
+                    currentSection === item.id ? 'text-primary' : 'text-foreground/70'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <Icon name={mobileMenuOpen ? 'X' : 'Menu'} size={24} />
-          </Button>
+            {isAuthenticated ? (
+              <Link to="/dashboard">
+                <Button className="hidden md:flex bg-gradient-to-r from-primary to-secondary hover:opacity-90">
+                  <Icon name="User" size={18} className="mr-2" />
+                  Личный кабинет
+                </Button>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <Button className="hidden md:flex bg-gradient-to-r from-primary to-secondary hover:opacity-90">
+                  <Icon name="LogIn" size={18} className="mr-2" />
+                  Войти
+                </Button>
+              </Link>
+            )}
+
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <Icon name={mobileMenuOpen ? 'X' : 'Menu'} size={24} />
+            </Button>
+          </div>
         </div>
 
         {mobileMenuOpen && (
@@ -73,6 +93,12 @@ export default function Header({ onNavigate, currentSection }: HeaderProps) {
                 {item.label}
               </button>
             ))}
+            <Link to={isAuthenticated ? '/dashboard' : '/login'}>
+              <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90">
+                <Icon name={isAuthenticated ? 'User' : 'LogIn'} size={18} className="mr-2" />
+                {isAuthenticated ? 'Личный кабинет' : 'Войти'}
+              </Button>
+            </Link>
           </nav>
         )}
       </div>

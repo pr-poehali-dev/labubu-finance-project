@@ -1,0 +1,43 @@
+{
+  "tests": [
+    {
+      "name": "Get loan statistics",
+      "method": "GET",
+      "path": "/?stats=true",
+      "headers": {
+        "X-Auth-Token": "test-token"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "stats": {
+          "active_loans": "number",
+          "total_loans": "number"
+        }
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Create loan application",
+      "method": "POST",
+      "path": "/",
+      "headers": {
+        "X-Auth-Token": "test-token"
+      },
+      "body": {
+        "action": "create",
+        "amount": 10000,
+        "term_days": 30,
+        "purpose": "Personal needs"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "loan": {
+          "amount": "number"
+        }
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

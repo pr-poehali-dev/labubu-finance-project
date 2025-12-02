@@ -1,0 +1,35 @@
+{
+  "tests": [
+    {
+      "name": "Get or create virtual card",
+      "method": "GET",
+      "path": "/",
+      "headers": {
+        "X-Auth-Token": "test-token"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "card": {
+          "card_number": "string",
+          "balance": "number"
+        }
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get card transactions",
+      "method": "GET",
+      "path": "/?transactions=true",
+      "headers": {
+        "X-Auth-Token": "test-token"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "transactions": "array"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

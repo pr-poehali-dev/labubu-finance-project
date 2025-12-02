@@ -1,0 +1,35 @@
+{
+  "tests": [
+    {
+      "name": "Get referral stats",
+      "method": "GET",
+      "path": "/?stats=true",
+      "headers": {
+        "X-Auth-Token": "test-token"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "referral_code": "string",
+        "stats": {
+          "total_referrals": "number"
+        }
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get referral list",
+      "method": "GET",
+      "path": "/?list=true",
+      "headers": {
+        "X-Auth-Token": "test-token"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "referrals": "array"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
